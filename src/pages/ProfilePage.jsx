@@ -40,7 +40,7 @@ const ProfilePage = () => {
                 src={selectedImage || authUser.profilePic || "/avatar2.png"}
                 // src="https://res.cloudinary.com/ddoh8ufzd/image/upload/v1777440294/s1_ht0r6w.png"
                 alt="profile"
-                className=" size-32 rounded-full object-cover border-4"
+                className=" size-32 rounded-full aspect-square border-4"
               />
               <label
                 htmlFor="avatar-upload"

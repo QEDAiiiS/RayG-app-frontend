@@ -53,7 +53,7 @@ const LoginPage = () => {
                 <input
                   type="email"
                   className={`input input-bordered w-full pl-10`}
-                  placeholder="Mahmoud"
+                  placeholder="Mahmoud@rayg.com"
                   value={formData.email}
                   onChange={(e) =>
                     setformData({ ...formData, email: e.target.value })

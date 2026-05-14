@@ -5,8 +5,10 @@ import { io } from "socket.io-client";
 
 // const BASE_URL = "http://localhost:5001"
 // const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5001" 
-const BASE_URL = "rayg-app-backend-production.up.railway.app"
-
+// const BASE_URL = "rayg-app-backend-production.up.railway.app"
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : 
+import.meta.env.VITE_API_URL
+ 
 
 const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -38,6 +40,7 @@ const useAuthStore = create((set, get) => ({
       const res = await axiosInstance.post("/auth/signup", data);
       set({ authUser: res.data });
       toast.success("Account created successfully");
+      get().connectSocket();
     } catch (err) {
       toast.error(err.response.data.message);
     } finally {
@@ -99,7 +102,6 @@ const useAuthStore = create((set, get) => ({
       query: {userId : authUser._id}
     })
 
-    
     newSocket.connect()
     
     set({ socket: newSocket })
@@ -116,3 +118,4 @@ const useAuthStore = create((set, get) => ({
 
 export default useAuthStore;
   
+

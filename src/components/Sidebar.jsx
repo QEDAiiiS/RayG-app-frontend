@@ -20,6 +20,18 @@ const Sidebar = () => {
     ? users.filter((user) => onlineUsers.includes(user._id))
     : users;
 
+    const sortedUsers = [...filteredUsers].sort((a, b) => {
+    const aOnline = onlineUsers.includes(a._id);
+    const bOnline = onlineUsers.includes(b._id);
+
+    // إذا كان 'a' نشط و 'b' غير نشط، نضع 'a' قبل 'b'
+    if (aOnline && !bOnline) return -1;
+    // إذا كان 'a' غير نشط و 'b' نشط، نضع 'b' قبل 'a'
+    if (!aOnline && bOnline) return 1;
+    // وإلا يبقوا كما هم
+    return 0;
+  });
+
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
@@ -47,7 +59,7 @@ const Sidebar = () => {
       </div>
 
       <div className=" overflow-y-auto w-full py-3">
-        {filteredUsers.map((user) => (
+        {sortedUsers.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
@@ -57,7 +69,7 @@ const Sidebar = () => {
               <img
                 src={user.profilePic || "/avatar2.png"}
                 alt={user.name}
-                className=" size-12 object-cover rounded-full"
+                className=" size-12 rounded-full"
               />
               {onlineUsers.includes(user._id) && (
                 <span className=" absolute bottom-0 right-0 size-3 bg-green-500 rounded-full ring-2 ring-zinc-900" />
@@ -74,7 +86,7 @@ const Sidebar = () => {
           </button>
         ))}
 
-        {filteredUsers.length === 0 && (
+        {sortedUsers.length === 0 && (
           <div className=" text-center text-zinc-500 py-4">
             No online users.
           </div>
