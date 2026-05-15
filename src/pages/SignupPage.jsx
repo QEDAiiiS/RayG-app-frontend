@@ -12,9 +12,13 @@ import {
 } from "lucide-react";
 import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
+import Hero from "../components/Hero";
+import Hero2 from "../components/Hero2";
+import { useThemeStore } from "../store/useThemeStore";
 
 //? =========================== SIGNUP COMPONENT =========================== SIGNUP COMPONENT
 const SignupPage = () => {
+  const {theme} = useThemeStore()
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setformData] = useState({
     fullName: "",
@@ -45,7 +49,7 @@ const SignupPage = () => {
   return (
     <div className=" min-h-screen grid lg:grid-cols-2">
       {/*==========================  LEFT SIDE  ==========================   LEFT SIDE   */}
-      <div className=" flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className=" flex flex-col justify-center items-center p-6 sm:p-12 order-2 md:order-0">
         <div className=" w-full max-w-md space-y-8">
           {/*========================== LOGO */}
           <div className=" text-center mb-8">
@@ -166,12 +170,25 @@ const SignupPage = () => {
       </div>
 
       {/*==========================  RIGHT SIDE  ==========================   RIGHT SIDE   */}
-      <AuthImagePattern
+      {/* <AuthImagePattern
         title={"Join our community"}
         subtitle={
           "Connect with friends, share moments, and stay in touch with your loved ones"
         }
-      />
+      /> */}
+
+            {theme === "synthwave" || theme === "dark" || theme === "light" ? (
+        <Hero />
+      ) : theme === "cupcake" ? (
+        <Hero2 />
+      ) : (
+        <AuthImagePattern
+          title={"Join our community"}
+          subtitle={
+            "Connect with friends, share moments, and stay in touch with your loved ones"
+          }
+        />
+      )}
     </div>
   );
 };

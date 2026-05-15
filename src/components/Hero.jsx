@@ -1,6 +1,6 @@
 const Hero = (props) => (
 
-    <div className=" w-full flex justify-center items-center ">
+    <div className=" w-full flex justify-center items-center">
 
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" className="w-full h-auto max-w-150" {...props}>
     <path

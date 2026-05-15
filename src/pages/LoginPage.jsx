@@ -28,7 +28,7 @@ const LoginPage = () => {
   return (
     <div className=" min-h-screen grid lg:grid-cols-2">
       {/*==========================  LEFT SIDE  ==========================   LEFT SIDE   */}
-      <div className=" flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className=" flex flex-col justify-center items-center p-6 sm:p-12 order-2 md:order-0">
         <div className=" w-full max-w-md space-y-8">
           {/*========================== LOGO */}
           <div className=" text-center mb-8">
@@ -131,12 +131,11 @@ const LoginPage = () => {
 
       {/*==========================  RIGHT SIDE  ==========================   RIGHT SIDE   */}
 
-      {theme === "synthwave" || theme ===  "dark" || theme === "light" ? (
-        <Hero/>
-      ) : 
-      theme === "cupcake"  ? <Hero2/> :
-      
-      (
+      {theme === "synthwave" || theme === "dark" || theme === "light" ? (
+        <Hero />
+      ) : theme === "cupcake" ? (
+        <Hero2 />
+      ) : (
         <AuthImagePattern
           title={"Join our community"}
           subtitle={
