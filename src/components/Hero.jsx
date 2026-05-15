@@ -1,4 +1,4 @@
-const SvgComponent = (props) => (
+const Hero = (props) => (
 
     <div className=" w-full flex justify-center items-center ">
 
@@ -754,4 +754,4 @@ const SvgComponent = (props) => (
   </svg>
     </div>
 )
-export default SvgComponent
+export default Hero

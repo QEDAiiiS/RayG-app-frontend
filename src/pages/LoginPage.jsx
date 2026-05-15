@@ -3,9 +3,10 @@ import AuthImagePattern from "../components/AuthImagePattern";
 import useAuthStore from "../store/useAuthStore";
 import { useState } from "react";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
-import Hero from "../components/hero";
+
 import { useThemeStore } from "../store/useThemeStore";
 import Hero2 from "../components/Hero2";
+import Hero from "../components/Hero";
 
 //? =========================== LOGIN COMPONENT =========================== LOGIN COMPONENT
 const LoginPage = () => {
@@ -131,7 +132,7 @@ const LoginPage = () => {
       {/*==========================  RIGHT SIDE  ==========================   RIGHT SIDE   */}
 
       {theme === "synthwave" || theme ===  "dark" || theme === "light" ? (
-        <Hero />
+        <Hero/>
       ) : 
       theme === "cupcake"  ? <Hero2/> :
       
