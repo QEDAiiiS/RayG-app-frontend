@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern";
-import  useAuthStore  from "../store/useAuthStore";
+import useAuthStore from "../store/useAuthStore";
 import { useState } from "react";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
+import Hero from "../components/hero";
+import { useThemeStore } from "../store/useThemeStore";
+import Hero2 from "../components/Hero2";
 
 //? =========================== LOGIN COMPONENT =========================== LOGIN COMPONENT
 const LoginPage = () => {
+  const { theme } = useThemeStore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setformData] = useState({
     email: "",
@@ -32,9 +36,7 @@ const LoginPage = () => {
                 <MessageSquare className=" size-6 text-primary" />
               </div>
               <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className=" text-base-content/60">
-                Sign in to your account
-              </p>
+              <p className=" text-base-content/60">Sign in to your account</p>
             </div>
           </div>
 
@@ -99,7 +101,11 @@ const LoginPage = () => {
             </div>
 
             {/*========================== SUBMIT */}
-            <button type="submit" className=" btn btn-primary w-full" disabled={isLoggingIn}>
+            <button
+              type="submit"
+              className=" btn btn-primary w-full"
+              disabled={isLoggingIn}
+            >
               {isLoggingIn ? (
                 <>
                   <Loader2 className=" size-5 animate-spin" />
@@ -123,12 +129,20 @@ const LoginPage = () => {
       </div>
 
       {/*==========================  RIGHT SIDE  ==========================   RIGHT SIDE   */}
-      <AuthImagePattern
-        title={"Join our community"}
-        subtitle={
-          "Connect with friends, share moments, and stay in touch with your loved ones"
-        }
-      />
+
+      {theme === "synthwave" || theme ===  "dark" || theme === "light" ? (
+        <Hero />
+      ) : 
+      theme === "cupcake"  ? <Hero2/> :
+      
+      (
+        <AuthImagePattern
+          title={"Join our community"}
+          subtitle={
+            "Connect with friends, share moments, and stay in touch with your loved ones"
+          }
+        />
+      )}
     </div>
   );
 };

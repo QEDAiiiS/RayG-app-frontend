@@ -39,3 +39,9 @@
 /* @plugin "daisyui" {
   themes: light --default, dark --prefersdark, forest;
 } */
+
+
+/* ده هيلون كل الأجزاء اللي لونها الأصلي كان اللون اللي اخترته */
+.hero-svg  {
+  fill: base-content;
+}
