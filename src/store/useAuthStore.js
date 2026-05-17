@@ -99,7 +99,8 @@ const useAuthStore = create((set, get) => ({
     if(!authUser || socket?.connected) return
 
     const newSocket = io(BASE_URL, {
-      query: {userId : authUser._id}
+      query: {userId : authUser._id},
+      withCredentials: true,
     })
 
     newSocket.connect()
